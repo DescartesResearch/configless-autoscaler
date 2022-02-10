@@ -1,0 +1,81 @@
+# LOGGING
+logging:
+#  file:
+#    path: "/some/logpath"
+  level:
+    tools.descartes: DEBUG
+    root: WARN
+    # To get the H2 jdbc-url
+    # com.zaxxer.hikari: DEBUG
+
+# CLOUDFOUNDRY ACCESS AND APPS
+cloudfoundry:
+  domain: "some.cf.domain"
+  organization: "someorg"
+  space: "somespace"
+  user: "someuser"
+  password: "somepassword"
+  includeappregex: ".*"
+  excludeappregex: ".*"
+
+# PROMETHEUS
+prometheus:
+  url: "some.prometheus.url"
+  scrapeduration: 30
+
+# META RULES FOR CONSTRAINTS FOR THE INSTANCE NUMBERS
+constraints:
+  rules:
+    - app: "SOMEAPP"
+      relation: SMALLER
+      value: 5
+
+metrics:
+  eureka-to-cloudfoundry-names:
+    SOME_EUREKA_APPNAME: some_cf_app_name
+
+# SCALER SETTINGS
+scaling:
+  autostart: true
+  timeout: 300
+  instances: "SOME_INSTANCE_METRIC"
+  upscale:
+    limit: 2
+    timeout: 60
+  downscale:
+    limit: 1
+    timeout: 300
+  safety:
+    period: 0
+    ratio: 0.5
+  kpis:
+    SOMEAPP:
+      - name: "CPU"
+        slo: 0.8
+
+# SETTINGS FOR TRAINING AND RETRAINING
+training:
+  interval: 1200
+  importer:
+    import-metrics-from-database: false
+    sources:
+      - "home/trainingdata"
+  exporter:
+    enabled: true
+    store-metrics-in-database: false
+    metric-storage-exclusion-regex: "some_excluded_metric"
+  training-lookback-days: 10
+
+
+spring:
+  application:
+    name: autoscaler
+  ### Database ###
+  # Disable OSIV as it is considered an anti-pattern
+  jpa.open-in-view: false
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/changelog-master.xml
+# DEBUGGING ONLY
+#  h2:
+#    console.enabled: true

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Scaling Dashboard</title>
+</head>
+
+<body>
+    <h1>Scaling Dashboard</h1>
+    <br/>
+    <h2>Configuration</h2>
+    <p th:utext="${config}"></p>
+    <br/>
+    <h3>Edit Configuration Parameter</h3>
+    <form action="/dashboard/config/add" method="get">
+        Key: <input type="text" name="key" />
+        <br/>
+        Value: <input type="text" name="value" />
+        <input type="submit" value="Edit" />
+    </form>
+    <br/>
+    <h2>Constraints</h2>
+    <p th:utext="${constraint}" ></p>
+
+    <br/>
+    <h3>Add Constraint</h3>
+    (Allowed relations: SMALLER, SMALLER_EQUAL, GREATER, GREATER_EQUAL)<br/>
+    <form action="/dashboard/constraint/add" method="get">
+        App: <input type="text" name="app" />
+        <br/>
+        Relation: <input type="text" name="relation" />
+        <br/>
+        Value: <input type="text" name="value" />
+        <input type="submit" value="Submit" />
+    </form>
+    <br/>
+    <h3>Delete Constraint</h3>
+    <form action="/dashboard/constraint/delete" method="get">
+        App: <input type="text" name="app" />
+        <input type="submit" value="Delete">
+    </form>
+    <br/>
+    <h2>KPIs</h2>
+    <p th:utext="${kpis}"></p>
+    <br/>
+</body>
+</html>
