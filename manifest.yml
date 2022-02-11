@@ -6,10 +6,8 @@ applications:
     disk_quota: 1024M
     buildpacks:
       - java_buildpack_offline
-    path: ./target/dummy-0.0.1-SNAPSHOT.jar
+    path: ./target/configless-autoscaler-0.0.1-SNAPSHOT.jar
     env:
-      LOG_SPLUNK_RETRY_COUNT: 5
-      LOG_SPLUNK_SOURCE_TYPE: 'app_autoscaler'
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }, memory_calculator: { stack_threads: 25 } }'
     health-check-type: port
     routes:

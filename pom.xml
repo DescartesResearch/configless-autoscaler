@@ -10,10 +10,18 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tools.descartes.autoscaling</groupId>
-	<artifactId>dummy</artifactId>
+	<artifactId>configless-autoscaler</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dummy-autoscaler</name>
-	<description>Dummy autoscaler for proof of technology</description>
+	<name>configless-autoscaler</name>
+	<description>Self-training autoscaler for reduced configuration of scaling threshold parameters</description>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
